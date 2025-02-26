@@ -14,7 +14,15 @@ export class BookController {
 
     @Post('create')
     async createBook(@Body() body: CreateBookDto){
-        return this.bookService.createBook(body);
+        // this value of user will be derived from auth token
+        // but as we are not doing auth yet, so i will hard code the user
+        const user = {
+            "id": "666693e7-b569-45c8-9874-8f878f8a0d9c",
+            "name": "Ali",
+            "email": "Ali@gmail.com",
+            "password": "abcdefg"
+          }
+        return this.bookService.createBook(body,user);
     }
 
     @Get('get/:id')

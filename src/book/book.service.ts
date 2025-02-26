@@ -14,9 +14,9 @@ export class BookService {
     return await this.bookRepo.find();
   }
 
-  createBook(bookDto: CreateBookDto): Promise<Book> {
-    // create book
-    const book = this.bookRepo.create(bookDto);
+  createBook(bookDto: CreateBookDto, user: any): Promise<Book> {
+    // create book, idk why but we have to add there 3 dots before bookdto
+    const book = this.bookRepo.create({...bookDto, user});
     // save book in database
     return this.bookRepo.save(book);
   }

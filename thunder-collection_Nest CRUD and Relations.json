@@ -1,0 +1,181 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Nest CRUD and Relations",
+    "collectionId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+    "dateExported": "2025-02-26T08:13:27.930Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "3e1957e7-577b-40d1-a19a-f9229e776aec",
+            "name": "Books",
+            "containerId": "",
+            "created": "2025-02-26T05:53:15.470Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "6d248ebd-8258-4013-940b-f06571305431",
+            "name": "Users",
+            "containerId": "",
+            "created": "2025-02-26T06:42:43.210Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "4edd5d89-3cba-4d5f-9179-bdd66eba3399",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "3e1957e7-577b-40d1-a19a-f9229e776aec",
+            "name": "Get All Books",
+            "url": "localhost:3000/books/all",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2025-02-26T04:51:12.483Z",
+            "modified": "2025-02-26T07:47:11.365Z",
+            "headers": []
+        },
+        {
+            "_id": "ac9a4552-2987-4797-bc0e-daf5877aa917",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "3e1957e7-577b-40d1-a19a-f9229e776aec",
+            "name": "Create Book",
+            "url": "localhost:3000/books/create",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2025-02-26T05:56:58.679Z",
+            "modified": "2025-02-26T06:42:17.889Z",
+            "headers": [
+                {
+                    "name": "Connection",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"God of Small Things\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "6e20c39d-7a82-4eb4-8442-4dd73fd62bd1",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "3e1957e7-577b-40d1-a19a-f9229e776aec",
+            "name": "Get One Book",
+            "url": "localhost:3000/books/get/04c4903d-a020-40bd-94b2-a6d853c46432",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2025-02-26T06:23:36.677Z",
+            "modified": "2025-02-26T08:10:54.980Z",
+            "headers": []
+        },
+        {
+            "_id": "fc6981f8-1641-4dcd-84e5-a8fbef4fe0ee",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "3e1957e7-577b-40d1-a19a-f9229e776aec",
+            "name": "Update Book",
+            "url": "localhost:3000/books/update/fa3b1613-775c-44f8-8fb9-bcac7303037e",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2025-02-26T06:30:24.691Z",
+            "modified": "2025-02-26T06:42:04.688Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Wren Hunt\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "4bb2d7eb-1df5-4b32-909e-d6049170c942",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "3e1957e7-577b-40d1-a19a-f9229e776aec",
+            "name": "Delete Book",
+            "url": "localhost:3000/books/delete/04c4903d-a020-40bd-94b2-a6d853c46432",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2025-02-26T06:30:26.536Z",
+            "modified": "2025-02-26T08:12:02.385Z",
+            "headers": []
+        },
+        {
+            "_id": "eec5cc88-520b-4012-8503-e86444756df1",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "6d248ebd-8258-4013-940b-f06571305431",
+            "name": "Get All Users",
+            "url": "localhost:3000/users/all",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2025-02-26T07:28:58.590Z",
+            "modified": "2025-02-26T07:47:50.343Z",
+            "headers": []
+        },
+        {
+            "_id": "5dafaa66-d5d5-4c93-b409-d8571b68845e",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "6d248ebd-8258-4013-940b-f06571305431",
+            "name": "Create User",
+            "url": "localhost:3000/users/create",
+            "method": "POST",
+            "sortNum": 55000,
+            "created": "2025-02-26T07:30:05.969Z",
+            "modified": "2025-02-26T07:54:44.616Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Anees\",\n  \"email\":\"anees@gmail.com\",\n  \"password\":\"12345678\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "3210dab6-eb48-4fdb-8b5a-81123aa1596f",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "6d248ebd-8258-4013-940b-f06571305431",
+            "name": "Get One User",
+            "url": "localhost:3000/users/get/666693e7-b569-45c8-9874-8f878f8a0d9c",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2025-02-26T07:47:58.006Z",
+            "modified": "2025-02-26T07:49:59.347Z",
+            "headers": []
+        },
+        {
+            "_id": "6db5ef27-cf7b-4694-871c-f2b42e15bb9a",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "6d248ebd-8258-4013-940b-f06571305431",
+            "name": "Update User",
+            "url": "localhost:3000/users/update/666693e7-b569-45c8-9874-8f878f8a0d9c",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2025-02-26T07:47:55.248Z",
+            "modified": "2025-02-26T07:52:57.321Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"ramon\",\n  \"email\":\"ramon@gmail.com\",\n  \"password\":\"!@#$%^&*\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "48b53f81-d2e9-46e1-a657-4db8bc37383a",
+            "colId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
+            "containerId": "6d248ebd-8258-4013-940b-f06571305431",
+            "name": "Delete User",
+            "url": "localhost:3000/users/delete/62409d01-1609-4f02-8ce2-9006c9684914",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2025-02-26T07:48:43.115Z",
+            "modified": "2025-02-26T07:55:06.692Z",
+            "headers": []
+        }
+    ],
+    "ref": "LbfOsJWRtDIt28jdvpUKIT4F_Q2CsF0Df79yiQXjNRORSs4vip6oN3Z6JDKo53CVGn4aoKn6bkGFGzuhzP3p7g"
+}
