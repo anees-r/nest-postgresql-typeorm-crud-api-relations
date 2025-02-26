@@ -7,7 +7,7 @@ import { UpdateBookDto } from './dto/update.book.dto';
 export class BookController {
     constructor(private bookService: BookService){}
 
-    @Get('getall')
+    @Get('all')
     async findAll(){
         return this.bookService.findAll();
     }
@@ -17,7 +17,7 @@ export class BookController {
         return this.bookService.createBook(body);
     }
 
-    @Get('getone/:id')
+    @Get('get/:id')
     async findOne(@Param('id') id: string){
         return this.bookService.findOne(id);
     }

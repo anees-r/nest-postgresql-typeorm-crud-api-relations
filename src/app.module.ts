@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { BookModule } from './book/book.module';
 import { UserModule } from './user/user.module';
 import { Book } from './book/book.entity';
+import { User } from './user/user.entity';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { Book } from './book/book.entity';
       username: 'postgres',
       password: 'root',
       database: 'testcrud',
-      entities: [Book],
+      entities: [Book, User],
       synchronize: true,
     }),
     BookModule,
