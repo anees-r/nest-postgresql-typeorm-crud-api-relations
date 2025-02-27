@@ -64,11 +64,31 @@ export class BookService {
 
   async findBookByUser(id:string): Promise<Book[]>{
     // using querybuilder to apply innerjoin at both tables and fetch books by matching userid
-    const books = await this.bookRepo
-    .createQueryBuilder('book')
-    .innerJoinAndSelect('book.user','user')
-    .where('user.id = :id', {id})
-    .getMany();
+    
+    // if we have established a relation between the entities
+    // const books = await this.bookRepo
+    // .createQueryBuilder('book')
+    // .innerJoinAndSelect('book.user','user')
+    // .where('user.id = :id', {id})
+    // .getMany();
+
+    
+    // if we dont have a relation between entities
+    // const books = await this.bookRepo
+    // .createQueryBuilder('book')
+    // .innerJoin('user', 'user', 'book.userId = user.id') // from user (table) as user match book.userId to user.id
+    // .select(['book.id', 'book.title', 'user.name'])
+    // .where('user.id = :id', { id }) // show records of this user only
+    // .getMany();
+    // if we want to fetch data of books and user as well based on our condition we can use getRawMany()
+
+
+    // writing simple typeorm query when we have a relation between entities (do this when queries are less complex)
+    const books = await this.bookRepo.find(
+      {
+        where: { user: { id: id } }, // fitler books by entered user id
+        relations: ['user'] // return the details of that user as well
+      })
 
     return books;
   }
