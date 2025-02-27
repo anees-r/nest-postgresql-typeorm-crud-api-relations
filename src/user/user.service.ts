@@ -2,14 +2,16 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import { UpdateUserDto } from './dto/update.user.dto';
+import { CreateUserDto } from './dto/create.user.dto';
 
 @Injectable()
 export class UserService {
     constructor(@InjectRepository(User) private userRepo: Repository<User>){}
 
-    async createUser(name: string, email: string, password: string){
+    async createUser(userDto: CreateUserDto){
         // we can pass direct arguments as well instead of dto, but dto allows us to validate our parameters
-        const user = await this.userRepo.create({name, email, password});
+        const user = await this.userRepo.create(userDto);
 
         return await this.userRepo.save(user);
     }
@@ -27,12 +29,12 @@ export class UserService {
         return user;
     }
 
-    async updateUser(id: string, name: string, email: string, password: string): Promise<User>{
+    async updateUser(id:string, updateUserDto: UpdateUserDto): Promise<User>{
         const user = await this.userRepo.findOneBy({id})
         if(!user){
             throw new NotFoundException('User not found!')
         }
-        Object.assign(user, {name, email, password})
+        Object.assign(user, updateUserDto)
         return this.userRepo.save(user);
     }
 

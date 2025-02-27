@@ -4,6 +4,7 @@ import {
     EntitySubscriberInterface,
     EventSubscriber,
     InsertEvent,
+    UpdateEvent,
   } from 'typeorm';
   import { User } from '../user.entity';
   import * as bcrypt from 'bcrypt'
@@ -24,5 +25,14 @@ import {
         const hashedPass = bcrypt.hashSync(user.password, 10)
         user.password = hashedPass
     }
+
+    beforeUpdate(event: UpdateEvent<User>) {
+
+      const user = event.entity
+      if(user && user.password){
+        const hashedPass = bcrypt.hashSync(user.password, 10)
+        user.password = hashedPass
+      }
+  }
   }
   

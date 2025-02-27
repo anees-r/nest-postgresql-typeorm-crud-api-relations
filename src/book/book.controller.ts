@@ -18,9 +18,9 @@ export class BookController {
         // but as we are not doing auth yet, so i will hard code the user
         const user = {
             "id": "666693e7-b569-45c8-9874-8f878f8a0d9c",
-            "name": "Ali",
-            "email": "Ali@gmail.com",
-            "password": "abcdefg"
+            "name": "Anees",
+            "email": "anees.dev2002@gmail.com",
+            "password": "hardcodedpassword"
           }
         return this.bookService.createBook(body,user);
     }
@@ -38,5 +38,10 @@ export class BookController {
     @Delete('delete/:id')
     async deleteBook(@Param('id') id: string){
         return this.bookService.deleteBook(id);
+    }
+
+    @Get('by/:id')
+    async findBookByUser(@Param('id') id: string){
+        return this.bookService.findBookByUser(id);
     }
 }

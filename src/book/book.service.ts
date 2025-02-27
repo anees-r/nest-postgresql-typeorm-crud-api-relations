@@ -1,9 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Param } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Book } from './book.entity';
 import { Repository } from 'typeorm';
 import { CreateBookDto } from './dto/create.book.dto';
 import { UpdateBookDto } from './dto/update.book.dto';
+import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class BookService {
@@ -59,5 +60,16 @@ export class BookService {
 
     // delete if book exists
     await this.bookRepo.delete(id);
+  }
+
+  async findBookByUser(id:string): Promise<Book[]>{
+    // using querybuilder to apply innerjoin at both tables and fetch books by matching userid
+    const books = await this.bookRepo
+    .createQueryBuilder('book')
+    .innerJoinAndSelect('book.user','user')
+    .where('user.id = :id', {id})
+    .getMany();
+
+    return books;
   }
 }

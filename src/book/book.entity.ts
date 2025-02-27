@@ -16,6 +16,6 @@ export class Book {
     // current instance of book will be linked to user.books
 
     // and we will save this in controller and server of the Many side of relation
-    @ManyToOne(()=>User, (user)=>user.books)
+    @ManyToOne(()=>User, (user)=>user.books, { onDelete: 'CASCADE' })
     user: User
 }

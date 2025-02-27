@@ -1,5 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { UserService } from './user.service';
+import { CreateUserDto } from './dto/create.user.dto';
+import { UpdateUserDto } from './dto/update.user.dto';
 
 @Controller('users')
 export class UserController {
@@ -16,17 +18,15 @@ export class UserController {
     }
 
     @Post('create')
-    async createUser(@Body() body){
+    async createUser(@Body() body: CreateUserDto){
         // when we dont use decorator, we can simply get the body object through this decorator
         // and then we can destruct the body object into required variables
-        const {name, email, password} = body
-        return this.userService.createUser(name,email,password);
+        return this.userService.createUser(body);
     }
 
     @Put('update/:id')
-    async updateUser(@Param('id') id: string ,@Body() body){
-        const {name, email, password} = body
-        return this.userService.updateUser(id,name,email,password);
+    async updateUser(@Param('id') id: string ,@Body() body: UpdateUserDto){
+        return this.userService.updateUser(id,body);
     }
 
     @Delete('delete/:id')
