@@ -10,12 +10,47 @@ import { User } from 'src/user/user.entity';
 export class BookService {
   constructor(@InjectRepository(Book) private bookRepo: Repository<Book>) {}
 
-  async findAll(): Promise<Book[]> {
+  async findAll()
+   {
     // get all the books
-    return await this.bookRepo.find();
+    // return await this.bookRepo.find();
+    // try{
+    //   const books = await this.bookRepo
+    //   .createQueryBuilder('book')
+    //   .innerJoin('user', 'user', 'book.userId = user.id') // from user (table) as user match book.userId to user.id
+    //   .select(['book.id', 'book.title', 'user.name','user.id'])// show records of this user only
+    //   .getRawMany();
+    //   if(books.length>0){
+    //     return ({
+    //       httpStatus: 'SUCCESS',
+    //       message:'Data fetched successfully!',
+    //       data: books,
+    //       httpCode: '200'
+    //     })
+    //   }else{
+    //     return ({
+    //       httpStatus: 'FAILED',
+    //       message:'Could not fetch data! INTERNAL SERVER ERROR',
+    //       data: books,
+    //       httpCode: '500'
+    //     })
+    //   }
+  
+    // }catch(err){
+    //   return err;
+    // }
+
+    const books = await this.bookRepo
+      .createQueryBuilder('book')
+      .innerJoin('user', 'user', 'book.userId = user.id') // from user (table) as user match book.userId to user.id
+      .select(['book.id', 'book.title', 'user.name','user.id'])// show records of this user only
+      .getRawMany();
+
+    return books;
+    
   }
 
-  createBook(bookDto: CreateBookDto, user: any): Promise<Book> {
+  createBook(bookDto: CreateBookDto, user: any) {
     // create book, idk why but we have to add there 3 dots before bookdto
     const book = this.bookRepo.create({...bookDto, user});
     // save book in database
@@ -74,21 +109,23 @@ export class BookService {
 
     
     // if we dont have a relation between entities
-    // const books = await this.bookRepo
-    // .createQueryBuilder('book')
-    // .innerJoin('user', 'user', 'book.userId = user.id') // from user (table) as user match book.userId to user.id
-    // .select(['book.id', 'book.title', 'user.name'])
-    // .where('user.id = :id', { id }) // show records of this user only
-    // .getMany();
+    const books = await this.bookRepo
+    .createQueryBuilder('book')
+    .innerJoin('user', 'user', 'book.userId = user.id') // from user (table) as user match book.userId to user.id
+    .select(['book.id', 'book.title', 'user.name', 'user.id'])
+    .where('user.id = :id', { id }) // show records of this user only
+    .getRawMany();
     // if we want to fetch data of books and user as well based on our condition we can use getRawMany()
 
 
     // writing simple typeorm query when we have a relation between entities (do this when queries are less complex)
-    const books = await this.bookRepo.find(
-      {
-        where: { user: { id: id } }, // fitler books by entered user id
-        relations: ['user'] // return the details of that user as well
-      })
+    // const books = await this.bookRepo.find(
+    //   {
+    //     where: { user: { id: id } }, // fitler books by entered user id
+    //     relations: ['user'] // return the details of that user as well
+    //   })
+
+    
 
     return books;
   }
