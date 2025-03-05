@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Melit",
     "collectionId": "831b4299-d09d-4991-9c81-f3d41a1bf70d",
-    "dateExported": "2025-03-04T06:57:54.303Z",
+    "dateExported": "2025-03-05T06:38:16.688Z",
     "version": "1.2",
     "folders": [
         {
@@ -30,8 +30,13 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2025-02-26T04:51:12.483Z",
-            "modified": "2025-02-28T10:44:25.549Z",
-            "headers": []
+            "modified": "2025-03-05T05:04:32.276Z",
+            "headers": [
+                {
+                    "name": "custom_auth",
+                    "value": "im-allowed-to-do-this"
+                }
+            ]
         },
         {
             "_id": "ac9a4552-2987-4797-bc0e-daf5877aa917",
@@ -143,5 +148,5 @@
             "headers": []
         }
     ],
-    "ref": "LbfOsJWRtDIt28jdvpUKIV8scybgpFzP2hPEYsF51ItONBT5RhgMgUufv97N07tM3_nNIxnlU-LBK8hiL6rZdw"
+    "ref": "LbfOsJWRtDIt28jdvpUKIdBysxoquxIIBqJokUKL0GgzAfEKUWb5payQxXM4B5eXrzW_XuTU52VBmzkCLaaQ4Q"
 }

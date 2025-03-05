@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "108c02e1-d355-4dec-b79b-899b6b70b9d0",
+        "_postman_id": "d5e3ee7a-0cff-495d-bf24-a904c9c2cf43",
         "name": "Melit",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -23,7 +23,13 @@
                                 "localhost"
                             ],
                             "port": "3001"
-                        }
+                        },
+                        "header": [
+                            {
+                                "key": "custom_auth",
+                                "value": "im-allowed-to-do-this"
+                            }
+                        ]
                     }
                 },
                 {
