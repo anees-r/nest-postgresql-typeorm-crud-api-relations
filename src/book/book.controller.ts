@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Head, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { BookService } from './book.service';
 import { CreateBookDto } from './dto/create.book.dto';
 import { UpdateBookDto } from './dto/update.book.dto';
+import { HeaderGuard } from "../guards/header.guard";
 @Controller('books')
 export class BookController {
     constructor(private bookService: BookService){}
@@ -12,6 +13,7 @@ export class BookController {
     }
 
     @Post('create')
+    @UseGuards(HeaderGuard) //custom guard
     async createBook(@Body() body: CreateBookDto){
         // this value of user will be derived from auth token
         // but as we are not doing auth yet, so i will hard code the user
@@ -30,6 +32,7 @@ export class BookController {
     }
 
     @Put('update/:id')
+    @UseGuards(HeaderGuard) //custom guard
     async updateBook(@Param('id') id: string, @Body() body: UpdateBookDto){
         return this.bookService.updateBook(id, body);
     }
